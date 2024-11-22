@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import LoginScreen from '../Demo4/components/LoginScreen';
-import HomeScreen from './components/HomeScreen';
-import { ProfileProvider } from './contexts/ProfileContext'; // Import ProfileProvider
-// import User from './components/User';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -33,15 +31,12 @@ const App = () => {
   }
 
   return (
-    <ProfileProvider>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={isLoggedIn ? 'Home' : 'Login'}>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
-          {/* <Stack.Screen name="User" component={User} /> */}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ProfileProvider>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={isLoggedIn ? 'Home' : 'Login'}>
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
